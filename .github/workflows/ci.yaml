@@ -49,22 +49,20 @@ jobs:
         username: ${{ secrets.AWS_EC2_USER }}
         key: ${{ secrets.AWS_SSH_KEY }}
         script: |
-          # 1. AWS क्रेडेंशियल्स को सेट करें
           export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
           export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           export AWS_DEFAULT_REGION="us-east-1"
 
-          # 2. AWS अकाउंट आईडी प्राप्त करें और ECR रजिस्ट्री यूआरएल सेट करें
+         
           AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com"
 
-          # 3. ECR में लॉगिन करें
+        
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
           
-          # 4. पुराने कंटेनर को सर्वर से साफ करें
+        
           docker stop credit-card-app || true
           docker rm credit-card-app || true
-          
-          # 5. ECR से लेटेस्ट इमेज पुल करें और पोर्ट 8000 पर रन करें
+       
           docker pull $ECR_REGISTRY/credit-card-fraud:latest
           docker run -d --name credit-card-app -p 8000:8000 $ECR_REGISTRY/credit-card-fraud:latest
