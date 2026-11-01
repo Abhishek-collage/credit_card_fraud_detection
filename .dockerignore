@@ -1,0 +1,26 @@
+
+myenv/
+venv/
+ENV/
+env/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Environment Variables
+.env
+
+# IDE
+.vscode/
+.idea/

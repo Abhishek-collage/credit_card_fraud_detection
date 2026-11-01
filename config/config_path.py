@@ -13,9 +13,9 @@ CONFIG_PATH = "config/config.yaml"
 ######################## DATA PROCESSING ########################
 
 PREPROCESS_DIR = "artifacts/processed"
-PREPROCESS_TRAIN_DATA_PATH = os.path.join(PROCESSED_DIR,"processed_train.csv")
-PREPROCESS_TEST_DATA_PATH = os.path.join(PROCESSED_DIR,"processed_test.csv")
+PREPROCESS_TRAIN_DATA_PATH = os.path.join(PREPROCESS_DIR,"processed_train.csv")
+PREPROCESS_TEST_DATA_PATH = os.path.join(PREPROCESS_DIR,"processed_test.csv")
 
 
 ####################### MODEL TRAINING #################
-MODEL_OUTPUT_PATH = "artifacts/models"
+MODEL_OUTPUT_PATH = "artifacts/models.pkl"

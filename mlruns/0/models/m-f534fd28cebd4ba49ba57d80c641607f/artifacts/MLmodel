@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/abhi/Downloads/mlops/mlruns/0/models/m-f534fd28cebd4ba49ba57d80c641607f/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.15.2
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types: null
+mlflow_version: 3.17.2
+model_id: m-f534fd28cebd4ba49ba57d80c641607f
+model_size_bytes: 17115
+model_uuid: m-f534fd28cebd4ba49ba57d80c641607f
+prompts: null
+run_id: 23f70f212e8a459e834b44e1a3bcb8b5
+utc_time_created: '2026-10-31 19:11:47.291272'

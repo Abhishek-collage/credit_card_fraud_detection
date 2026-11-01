@@ -1,0 +1,65 @@
+2026-10-31 11:29:32,133 - INFO - Successfully read the yaml file
+2026-10-31 11:29:32,140 - INFO - Data Ingestion started with credit_cardis credit_card
+2026-10-31 11:29:32,141 - INFO - Starting data ingestion process 
+2026-10-31 11:29:35,291 - INFO - Successfully connected to mongodb
+2026-10-31 11:29:37,230 - INFO - Successfully dataset saved
+2026-10-31 11:29:37,233 - INFO - Data ingestion  completed successfully
+2026-10-31 11:36:56,584 - INFO - Successfully read the yaml file
+2026-10-31 11:36:56,589 - INFO - Starting the split data process
+2026-10-31 11:36:56,603 - ERROR - Error while splitting 
+2026-10-31 11:36:56,604 - ERROR - Error during processing
+2026-10-31 11:43:58,494 - INFO - Successfully read the yaml file
+2026-10-31 11:43:58,498 - INFO - Starting data splitting
+2026-10-31 11:43:58,505 - ERROR - Error while splitting data: No columns to parse from file
+2026-10-31 11:43:58,506 - ERROR - Processing failed: Error in C:\Users\abhi\Downloads\mlops\src\data_preprocessing.py, line 44 : Failed to split training and testing data
+2026-10-31 11:46:38,994 - INFO - Successfully read the yaml file
+2026-10-31 11:46:38,996 - INFO - Starting the split data process
+2026-10-31 11:46:39,006 - ERROR - Error while splitting 
+2026-10-31 11:46:39,006 - ERROR - Error during processing
+2026-10-31 11:53:27,159 - INFO - Successfully read the yaml file
+2026-10-31 11:53:27,162 - INFO - Data Ingestion started with credit_cardis credit_card
+2026-10-31 11:53:27,163 - INFO - Starting data ingestion process 
+2026-10-31 11:53:28,669 - INFO - Successfully connected to mongodb
+2026-10-31 11:53:30,026 - INFO - Successfully dataset saved
+2026-10-31 11:53:30,029 - INFO - Data ingestion  completed successfully
+2026-10-31 11:54:57,387 - INFO - Successfully read the yaml file
+2026-10-31 11:54:57,388 - INFO - Starting the split data process
+2026-10-31 11:54:57,394 - ERROR - Error while splitting 
+2026-10-31 11:54:57,395 - ERROR - Error during processing
+2026-10-31 12:05:42,995 - INFO - Successfully read the yaml file
+2026-10-31 12:05:42,999 - INFO - Data Ingestion started with credit_card_collectionis credit_card
+2026-10-31 12:05:43,000 - INFO - Starting data ingestion process 
+2026-10-31 12:05:44,682 - INFO - Successfully connected to mongodb
+2026-10-31 12:05:46,306 - INFO - Successfully dataset saved
+2026-10-31 12:05:46,312 - INFO - Data ingestion  completed successfully
+2026-10-31 12:06:19,067 - INFO - Successfully read the yaml file
+2026-10-31 12:06:19,069 - INFO - Starting the split data process
+2026-10-31 12:06:20,295 - INFO -  Train file saved artifacts/raw\train.csv
+2026-10-31 12:06:20,295 - INFO - Test file saved artifacts/raw\test.csv
+2026-10-31 12:06:20,296 - INFO - loding raw data from the directory
+2026-10-31 12:06:20,297 - INFO - Loading data
+2026-10-31 12:06:20,372 - INFO - Loading data
+2026-10-31 12:06:20,430 - INFO - Saving data processed folder 
+2026-10-31 12:06:20,515 - INFO - Data saved successfully to artifacts/processed\processed_train.csv
+2026-10-31 12:06:20,516 - INFO - Saving data processed folder 
+2026-10-31 12:06:20,546 - INFO - Data saved successfully to artifacts/processed\processed_test.csv
+2026-10-31 12:07:39,403 - ERROR - Error in model training pipeline: No module named 'alembic'
+2026-10-31 12:11:39,188 - INFO - Starting model training pipeline
+2026-10-31 12:11:39,190 - INFO - Loading data from artifacts/processed\processed_train.csv
+2026-10-31 12:11:39,190 - INFO - Loading data
+2026-10-31 12:11:39,282 - INFO - Loading data from artifacts/processed\processed_test.csv
+2026-10-31 12:11:39,283 - INFO - Loading data
+2026-10-31 12:11:39,367 - INFO - Data split successfully for model training
+2026-10-31 12:11:39,368 - INFO - Logging datasets to mlflow
+2026-10-31 12:11:39,538 - INFO - Initializing model
+2026-10-31 12:11:39,539 - INFO - Starting model training
+2026-10-31 12:11:45,793 - INFO - Model training completed successfully
+2026-10-31 12:11:45,798 - INFO - Saving the model locally
+2026-10-31 12:11:45,817 - INFO - Model saved locally to artifacts/models.pkl
+2026-10-31 12:11:45,818 - INFO - Evaluating model
+2026-10-31 12:11:46,084 - INFO - Accuracy Score : 0.953125
+2026-10-31 12:11:46,085 - INFO - Precision Score : 0.967741935483871
+2026-10-31 12:11:46,085 - INFO - Recall Score : 0.9375
+2026-10-31 12:11:46,086 - INFO - F1 Score : 0.9523809523809523
+2026-10-31 12:11:46,087 - INFO - Logging model parameters and metrics to mlflow
+2026-10-31 12:13:02,062 - INFO - Model pipeline completed and tracked on MLflow successfully!

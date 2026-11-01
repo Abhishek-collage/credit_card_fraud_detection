@@ -1,0 +1,62 @@
+name: Credit Card Fraud Detection CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    name: Build Docker Image and Push to ECR
+    runs-on: ubuntu-latest
+    outputs:
+      ecr_registry: ${{ steps.login-ecr.outputs.registry }}
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build, Tag, and Push Image to ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: credit-card-fraud  # अपनी ECR Repository का नाम यहाँ लिखें
+        IMAGE_TAG: latest
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  deploy-to-ec2:
+    name: Deploy Container to Amazon EC2
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH into EC2 and Deploy
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.AWS_EC2_IP }}
+        username: ${{ secrets.AWS_EC2_USER }}
+        key: ${{ secrets.AWS_SSH_KEY }}
+        script: |
+        
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ needs.build-and-push.outputs.ecr_registry }}
+          
+          docker stop credit-card-app || true
+          docker rm credit-card-app || true
+          
+          # ECR से लेटेस्ट Docker इमेज पुल करें
+          docker pull ${{ needs.build-and-push.outputs.ecr_registry }}/credit-card-fraud:latest
+          
+      
+          docker run -d --name credit-card-app -p 8000:8000 ${{ needs.build-and-push.outputs.ecr_registry }}/credit-card-fraud:latest
