@@ -1,6 +1,6 @@
 import os
 
-########################### DATA INGESTION #########################
+########################### DATA INGESTION #########################xx
 
 RAW_DIR = "artifacts/raw"
 RAW_FILE_PATH = os.path.join(RAW_DIR,"raw.csv")
