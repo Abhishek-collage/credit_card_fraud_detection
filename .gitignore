@@ -13,6 +13,3 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Machine Learning Outputs (ignore if files are too large)
-*.pkl
-*.joblib
