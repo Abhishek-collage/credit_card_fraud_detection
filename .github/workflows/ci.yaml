@@ -49,15 +49,18 @@ jobs:
         username: ${{ secrets.AWS_EC2_USER }}
         key: ${{ secrets.AWS_SSH_KEY }}
         script: |
-     
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ needs.build-and-push.outputs.ecr_registry }}
+          # EC2 के अंदर AWS क्रेडेंशियल्स अस्थायी रूप से सेट करें
+          export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
+          export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          export AWS_DEFAULT_REGION="us-east-1"
+
+          # अब ECR से ऑथेंटिकेट करें
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ://amazonaws.com
           
-         
+          # पुराना कंटेनर साफ करें
           docker stop credit-card-app || true
           docker rm credit-card-app || true
           
-
-          docker pull ${{ needs.build-and-push.outputs.ecr_registry }}/credit-card-fraud:latest
-          
-       
-          docker run -d --name credit-card-app -p 8000:8000 ${{ needs.build-and-push.outputs.ecr_registry }}/credit-card-fraud:latest
+          # इमेज पुल करें और रन करें
+          docker pull ://amazonaws.com/credit-card-fraud:latest
+          docker run -d --name credit-card-app -p 8000:8000 ://amazonaws.com/credit-card-fraud:latest
